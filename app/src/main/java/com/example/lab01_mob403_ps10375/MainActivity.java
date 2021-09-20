@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity implements Runnable {
 
     TextView tvContent, tvTime;
     Thread thread;
-    String myTime = "00:00:00";
+    String timeLab01 = "00:00:00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +21,11 @@ public class MainActivity extends AppCompatActivity implements Runnable {
 
         tvContent = findViewById(R.id.tvContent);
         tvTime = findViewById(R.id.tvTime);
+
         thread = new Thread(this);
         thread.start();
-        tvContent.setText("Thuan__");
+
+        tvContent.setText("Successfully");
 
     }
 
@@ -32,12 +34,12 @@ public class MainActivity extends AppCompatActivity implements Runnable {
 
         for(int i=0; thread.isAlive(); i++){
             SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-            myTime = sdf.format(sdf.getCalendar().getTime());
-            Log.i("time: ", myTime);
+            timeLab01 = sdf.format(sdf.getCalendar().getTime());
+            Log.i("time: ", timeLab01);
             tvTime.post(new Runnable() {
                 @Override
                 public void run() {
-                    tvTime.setText(myTime);
+                    tvTime.setText(timeLab01);
                 }
             });
             try {
